@@ -43,7 +43,7 @@ body.dark  { background-color: var(--base03); color: var(--base2); }
   position: fixed;
   top: 5vh;
   left: 5vh;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .nav-button {
@@ -51,7 +51,7 @@ body.dark  { background-color: var(--base03); color: var(--base2); }
   width: 240px;
   height: 100px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-family: 'Sapporo Mincho', serif;
   font-size: 2.5rem;
   line-height: 100px;
@@ -77,7 +77,7 @@ body.dark  .nav-button { background-color: var(--base01); color: var(--base2); }
   width: 100px;
   height: 100px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: 'Sapporo Mincho', serif;
   font-size: 5rem;
@@ -95,13 +95,12 @@ body.dark  .theme-toggle { background-color: var(--base01); color: var(--base2);
 
 <div id="title">acvale.web</div>
 
-<button id="nav1" class="nav-button" onclick="location.href='index.html'">Home</button>
-<button id="nav2" class="nav-button">About</button>
-<button id="nav3" class="nav-button">Blog</button>
-<button id="nav4" class="nav-button">Contact</button>
+<button id="nav1" class="nav-button" onclick="location.href='index.html'">Other</button>
+<button id="nav2" class="nav-button" onclick="location.href='ManipulacaoBancoDados/me315.html'">R</button>
+<button id="nav3" class="nav-button">Python</button>
 
 <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">暗</button>
-
+<button id="homeIcon" class="theme-toggle" style="right: calc(100px + 5vh + 20px);" onclick="location.href='index.html'">&#x2302;</button>
 <script>
 (function() {
   const savedTheme = localStorage.getItem('theme');
