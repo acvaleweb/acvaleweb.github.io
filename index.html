@@ -105,21 +105,23 @@
     <button class="nav-button">Blog</button>
     <button class="nav-button">Contact</button>
   </div>
-  <button class="theme-toggle nav-button" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle nav-button" onclick="toggleTheme()">暗</button>
 
   <script>
 
     (function() {
   const savedTheme = localStorage.getItem('theme');
   const body = document.body;
+  const toggleBtn = document.getElementById('themeToggle');
 
   if (savedTheme === 'light') {
     body.classList.remove('dark');
     body.classList.add('light');
+    toggleBtn.textContent = '明';
   } else {
-    // Default to dark
     body.classList.remove('light');
     body.classList.add('dark');
+    toggleBtn.textContent = '暗';
   }
 })();
     
@@ -130,8 +132,13 @@
   body.classList.toggle('dark');
   body.classList.toggle('light');
 
-  // Save the new theme
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  // Save new theme
+  const newTheme = isDark ? 'light' : 'dark';
+  localStorage.setItem('theme', newTheme);
+
+  // Update button icon
+  const toggleBtn = document.getElementById('themeToggle');
+  toggleBtn.textContent = newTheme === 'dark' ? '暗' : '明'; // or '月'/'日'
 }
   </script>
 </body>
