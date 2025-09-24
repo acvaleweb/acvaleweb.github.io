@@ -1,128 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>acvale.web</title>
-  <style>
-    /* Import Sapporo Mincho - You must host or link it */
-    @font-face {
-      font-family: 'Sapporo Mincho';
-      src: url('ShipporiMincho-Medium.ttf') format('truetype'); /* Replace with actual path */
-    }
+<title>acvale.web</title>
+<style>
+@font-face {
+  font-family: 'Sapporo Mincho';
+  src: url('ShipporiMincho-Medium.ttf') format('truetype');
+}
 
-    :root {
-      --base03: #002b36;
-      --base02: #073642;
-      --base01: #586e75;
-      --base00: #657b83;
-      --base0:  #839496;
-      --base1:  #93a1a1;
-      --base2:  #eee8d5;
-      --base3:  #fdf6e3;
-      --yellow: #b58900;
-      --orange: #cb4b16;
-      --red:    #dc322f;
-      --magenta:#d33682;
-      --violet: #6c71c4;
-      --blue:   #268bd2;
-      --cyan:   #2aa198;
-      --green:  #859900;
-    }
+:root {
+  --base03: #002b36;
+  --base02: #073642;
+  --base01: #586e75;
+  --base00: #657b83;
+  --base0:  #839496;
+  --base1:  #93a1a1;
+  --base2:  #eee8d5;
+  --base3:  #fdf6e3;
+  --yellow: #b58900;
+  --orange: #cb4b16;
+  --red:    #dc322f;
+  --magenta:#d33682;
+  --violet: #6c71c4;
+  --blue:   #268bd2;
+  --cyan:   #2aa198;
+  --green:  #859900;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Sapporo Mincho', serif;
-      display: flex;
-      height: 100vh;
-      transition: background 0.3s, color 0.3s;
-    }
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Sapporo Mincho', serif;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+}
 
-    body.light {
-      background-color: var(--base3);
-      color: var(--base00);
-    }
+body.light { background-color: var(--base3); color: var(--base00); }
+body.dark  { background-color: var(--base03); color: var(--base2); }
 
-    body.dark {
-      background-color: var(--base03);
-      color: var(--base2);
-    }
+/* All fixed elements */
+#title {
+  position: fixed;
+  top: 5vh;
+  left: 5vh;
+  font-size: 5rem;
+}
 
-    .left {
-      flex: 1;
-      display: flex;
-      align-items: flex-start; /* Pushes content to the top */
-      padding-left: 2rem;
-      padding-top: 2rem;        /* Optional: adds space from top edge */
-      font-size: 2.5rem;
-    }
+.nav-button {
+  position: fixed;
+  width: 240px;
+  height: 100px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Sapporo Mincho', serif;
+  font-size: 2.5rem;
+  line-height: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
 
-    .right {
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      padding-right: 2rem;
-      gap: 1rem;
-    }
+body.light .nav-button { background-color: var(--base2); color: var(--base00); }
+body.dark  .nav-button { background-color: var(--base01); color: var(--base2); }
 
-    .nav-button {
-      font-family: 'Sapporo Mincho', serif;
-      height: 50px;
-      width: 30%;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.25rem;
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
+/* Position nav buttons bottom-right */
+#nav1 { bottom: 5vh; right: 5vh; }
+#nav2 { bottom: calc(5vh + 120px); right: 5vh; }
+#nav3 { bottom: calc(5vh + 240px); right: 5vh; }
+#nav4 { bottom: calc(5vh + 360px); right: 5vh; }
 
-    body.light .nav-button {
-      background-color: var(--base2);
-      color: var(--base00);
-    }
+/* Toggle button top-right */
+.theme-toggle {
+  position: fixed;
+  top: 5vh;
+  right: 5vh;
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Sapporo Mincho', serif;
+  font-size: 5rem;
+  line-height: 100px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
 
-    body.dark .nav-button {
-      background-color: var(--base01);
-      color: var(--base2);
-    }
+body.light .theme-toggle { background-color: var(--base2); color: var(--base00); }
+body.dark  .theme-toggle { background-color: var(--base01); color: var(--base2); }
 
-    .theme-toggle {
-      width: 50px;       /* square width */
-      height: 50px;      /* square height, matching your nav-button height */
-      padding: 0;        /* remove padding to keep exact size */
-      font-size: 2.5rem; /* bigger font size for Kanji */
-      line-height: 50px; /* vertically center text inside */
-      text-align: center;
-      font-family: 'Sapporo Mincho', serif; /* ensure font */
-      border-radius: 5px;
-      cursor: pointer;
-      /* position styles remain as before */
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-    }
-  </style>
+</style>
 </head>
 <body class="dark">
-  <div class="left">acvale.web</div>
-  <div class="right">
-    <button class="nav-button">Home</button>
-    <button class="nav-button">About</button>
-    <button class="nav-button">Blog</button>
-    <button class="nav-button">Contact</button>
-  </div>
-  <button id="themeToggle" class="theme-toggle nav-button" onclick="toggleTheme()">暗</button>
 
-  <script>
+<div id="title">acvale.web</div>
 
-    (function() {
+<button id="nav1" class="nav-button" onclick="location.href='index.html'">Home</button>
+<button id="nav2" class="nav-button">About</button>
+<button id="nav3" class="nav-button">Blog</button>
+<button id="nav4" class="nav-button">Contact</button>
+
+<button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">暗</button>
+
+<script>
+(function() {
   const savedTheme = localStorage.getItem('theme');
   const body = document.body;
   const toggleBtn = document.getElementById('themeToggle');
-
   if (savedTheme === 'light') {
     body.classList.remove('dark');
     body.classList.add('light');
@@ -133,22 +117,17 @@
     toggleBtn.textContent = '暗';
   }
 })();
-    
-   function toggleTheme() {
+
+function toggleTheme() {
   const body = document.body;
   const isDark = body.classList.contains('dark');
-
   body.classList.toggle('dark');
   body.classList.toggle('light');
-
-  // Save new theme
   const newTheme = isDark ? 'light' : 'dark';
   localStorage.setItem('theme', newTheme);
-
-  // Update button icon
-  const toggleBtn = document.getElementById('themeToggle');
-  toggleBtn.textContent = newTheme === 'dark' ? '暗' : '明'; // or '月'/'日'
+  document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '暗' : '明';
 }
-  </script>
+</script>
+
 </body>
 </html>
