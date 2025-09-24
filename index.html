@@ -67,11 +67,12 @@
     }
 
     .nav-button {
+      font-family: 'Sapporo Mincho', serif;
       height: 50px;
       width: 30%;
       border: none;
       border-radius: 5px;
-      font-size: 1rem;
+      font-size: 1.25rem;
       text-align: center;
       cursor: pointer;
       transition: background 0.3s, color 0.3s;
@@ -88,12 +89,20 @@
     }
 
     .theme-toggle {
+      width: 50px;       /* square width */
+      height: 50px;      /* square height, matching your nav-button height */
+      padding: 0;        /* remove padding to keep exact size */
+      font-size: 2.5rem; /* bigger font size for Kanji */
+      line-height: 50px; /* vertically center text inside */
+      text-align: center;
+      font-family: 'Sapporo Mincho', serif; /* ensure font */
+      border-radius: 5px;
+      cursor: pointer;
+      /* position styles remain as before */
       position: absolute;
       top: 1rem;
       right: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-size: 0.9rem;
+    }
     }
   </style>
 </head>
@@ -105,7 +114,7 @@
     <button class="nav-button">Blog</button>
     <button class="nav-button">Contact</button>
   </div>
-  <button class="theme-toggle nav-button" onclick="toggleTheme()">暗</button>
+  <button id="themeToggle" class="theme-toggle nav-button" onclick="toggleTheme()">暗</button>
 
   <script>
 
