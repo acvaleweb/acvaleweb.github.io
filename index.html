@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>acvale.web</title>
+  <style>
+    /* Import Sapporo Mincho - You must host or link it */
+    @font-face {
+      font-family: 'Sapporo Mincho';
+      src: url('SapporoMincho-Regular.woff2') format('woff2'); /* Replace with actual path */
+    }
+
+    :root {
+      --base03: #002b36;
+      --base02: #073642;
+      --base01: #586e75;
+      --base00: #657b83;
+      --base0:  #839496;
+      --base1:  #93a1a1;
+      --base2:  #eee8d5;
+      --base3:  #fdf6e3;
+      --yellow: #b58900;
+      --orange: #cb4b16;
+      --red:    #dc322f;
+      --magenta:#d33682;
+      --violet: #6c71c4;
+      --blue:   #268bd2;
+      --cyan:   #2aa198;
+      --green:  #859900;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Sapporo Mincho', serif;
+      display: flex;
+      height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light {
+      background-color: var(--base3);
+      color: var(--base00);
+    }
+
+    body.dark {
+      background-color: var(--base03);
+      color: var(--base0);
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding-left: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .right {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding-right: 2rem;
+      gap: 1rem;
+    }
+
+    .nav-button {
+      height: 50px;
+      width: 30%;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light .nav-button {
+      background-color: var(--base2);
+      color: var(--base00);
+    }
+
+    body.dark .nav-button {
+      background-color: var(--base01);
+      color: var(--base0);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="light">
+  <div class="left">acvale.web</div>
+  <div class="right">
+    <button class="nav-button">Home</button>
+    <button class="nav-button">About</button>
+    <button class="nav-button">Blog</button>
+    <button class="nav-button">Contact</button>
+  </div>
+  <button class="theme-toggle nav-button" onclick="toggleTheme()">Toggle Theme</button>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+    }
+  </script>
+</body>
+</html>
