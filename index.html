@@ -2,31 +2,11 @@
 <html lang="en">
 <head>
   <script>
-(function() {
-  const savedTheme = localStorage.getItem('theme');
-  const body = document.body;
-  const toggleBtn = document.getElementById('themeToggle');
-  if (savedTheme === 'light') {
-    body.classList.remove('dark');
-    body.classList.add('light');
-    toggleBtn.textContent = '明';
-  } else {
-    body.classList.remove('light');
-    body.classList.add('dark');
-    toggleBtn.textContent = '暗';
-  }
-})();
-
-function toggleTheme() {
-  const body = document.body;
-  const isDark = body.classList.contains('dark');
-  body.classList.toggle('dark');
-  body.classList.toggle('light');
-  const newTheme = isDark ? 'light' : 'dark';
-  localStorage.setItem('theme', newTheme);
-  document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '暗' : '明';
-}
-</script>
+    // Minimal early theme setup to prevent flash
+    const savedTheme = localStorage.getItem('theme');
+    const theme = savedTheme === 'light' ? 'light' : 'dark';
+    document.body.classList.add(theme);
+  </script>
 <title>acvale.web</title>
 <style>
 @font-face {
@@ -131,6 +111,18 @@ body.dark  .theme-toggle { background-color: var(--base01); color: var(--base2);
 
 <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">暗</button>
 <button id="homeIcon" class="theme-toggle" style="right: calc(100px + 1vw + 20px);" onclick="location.href='index.html'">&#x2302;</button>
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const isDark = body.classList.contains('dark');
+  body.classList.toggle('dark');
+  body.classList.toggle('light');
+  const newTheme = isDark ? 'light' : 'dark';
+  localStorage.setItem('theme', newTheme);
+  document.getElementById('themeToggle').textContent =
+    newTheme === 'dark' ? '暗' : '明';
+}
+</script>
 
 </body>
 </html>
