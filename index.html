@@ -1,128 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>acvale.web</title>
+
+  <style>
+    @font-face {
+      font-family: 'Sapporo Mincho';
+      src: url('HinaMincho-Regular.ttf') format('truetype');
+    }
+
+    :root {
+      --base03: #002b36;
+      --base02: #073642;
+      --base01: #586e75;
+      --base00: #657b83;
+      --base0:  #839496;
+      --base1:  #93a1a1;
+      --base2:  #eee8d5;
+      --base3:  #fdf6e3;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: 'Sapporo Mincho', serif;
+      transition: background 0.3s, color 0.3s;
+      position: relative;
+    }
+
+    html.light body { background-color: var(--base3); color: var(--base00); }
+    html.dark body  { background-color: var(--base03); color: var(--base2); }
+
+    #title { position: fixed; top: 1vw; left: 1vw; font-size: 3rem; }
+
+    .nav-button {
+      position: fixed;
+      width: 200px;
+      height: 80px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Sapporo Mincho', serif;
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    html.light body .nav-button { background-color: var(--base2); color: var(--base00); }
+    html.dark body  .nav-button { background-color: var(--base01); color: var(--base2); }
+
+    #nav1 { bottom: 1vw; right: 1vw; }
+    #nav2 { bottom: calc(1vw + 100px); right: 1vw; }
+    #nav3 { bottom: calc(1vw + 200px); right: 1vw; }
+    #nav4 { bottom: calc(1vw + 300px); right: 1vw; }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1vw;
+      right: 1vw;
+      width: 100px;
+      height: 100px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Sapporo Mincho', serif;
+      font-size: 5rem;
+      line-height: 100px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    html.light body .theme-toggle { background-color: var(--base2); color: var(--base00); }
+    html.dark body  .theme-toggle { background-color: var(--base01); color: var(--base2); }
+  </style>
+
   <script>
-    // Minimal early theme setup to prevent flash
+    // Apply theme immediately to <html> to prevent flash
     const savedTheme = localStorage.getItem('theme');
     const theme = savedTheme === 'light' ? 'light' : 'dark';
-    document.body.classList.add(theme);
+    document.documentElement.classList.add(theme);
   </script>
-<title>acvale.web</title>
-<style>
-@font-face {
-  font-family: 'Sapporo Mincho';
-  src: url('HinaMincho-Regular.ttf') format('truetype');
-}
-:root {
-  --base03: #002b36;
-  --base02: #073642;
-  --base01: #586e75;
-  --base00: #657b83;
-  --base0:  #839496;
-  --base1:  #93a1a1;
-  --base2:  #eee8d5;
-  --base3:  #fdf6e3;
-  --yellow: #b58900;
-  --orange: #cb4b16;
-  --red:    #dc322f;
-  --magenta:#d33682;
-  --violet: #6c71c4;
-  --blue:   #268bd2;
-  --cyan:   #2aa198;
-  --green:  #859900;
-}
-
-html, body {
-  margin: 0;
-  height: 100%;
-  font-family: 'Sapporo Mincho', serif;
-  transition: background 0.3s, color 0.3s;
-  position: relative;
-}
-
-body.light { background-color: var(--base3); color: var(--base00); }
-body.dark  { background-color: var(--base03); color: var(--base2); }
-
-/* All fixed elements */
-#title {
-  position: fixed;
-  top: 1vw;
-  left: 1vw;
-  font-size: 3rem;
-}
-
-.nav-button {
-  position: fixed;
-  width: 200px;
-  height: 80px;
-  border: none;
-  border-radius: 8px;
-  font-family: 'Sapporo Mincho', serif;
-  font-size: 2.5rem;
-  display: flex;               /* enable flex */
-  justify-content: center;     /* horizontal center */
-  align-items: center;         /* vertical center */
-  text-align: center;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-
-body.light .nav-button { background-color: var(--base2); color: var(--base00); }
-body.dark  .nav-button { background-color: var(--base01); color: var(--base2); }
-
-/* Position nav buttons bottom-right */
-#nav1 { bottom: 1vw; right: 1vw; }
-#nav2 { bottom: calc(1vw + 100px); right: 1vw; }
-#nav3 { bottom: calc(1vw + 200px); right: 1vw; }
-#nav4 { bottom: calc(1vw + 300px); right: 1vw; }
-
-/* Toggle button top-right */
-.theme-toggle {
-  position: fixed;
-  top: 1vw;
-  right: 1vw;
-  width: 100px;
-  height: 100px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: 'Sapporo Mincho', serif;
-  font-size: 5rem;
-  line-height: 100px;
-  text-align: center;
-  transition: background 0.3s, color 0.3s;
-}
-
-body.light .theme-toggle { background-color: var(--base2); color: var(--base00); }
-body.dark  .theme-toggle { background-color: var(--base01); color: var(--base2); }
-
-</style>
 </head>
-<body class="dark">
+<body>
   <div id="mainText" style="margin-left: 2vw; margin-top: 10vh; font-size: 2rem; max-width: 60vw;">
-  Hi there, thanks for visiting my website. I plan to add interesting things in the future, so stay tuned!
-</div>
-<img src="Openlogo-debianV2.svg" style="position:fixed; bottom:14vh; left:12vw; width:120px; height:auto;">
+    Hi there, thanks for visiting my website. I plan to add interesting things in the future, so stay tuned!
+  </div>
+  <img src="Openlogo-debianV2.svg" style="position:fixed; bottom:14vh; left:12vw; width:120px; height:auto;">
 
+  <button id="nav1" class="nav-button" onclick="location.href='index.html'">Other</button>
+  <button id="nav2" class="nav-button" onclick="location.href='ManipulacaoBancoDados/me315.html'">R</button>
+  <button id="nav3" class="nav-button">Python</button>
 
-<button id="nav1" class="nav-button" onclick="location.href='index.html'">Other</button>
-<button id="nav2" class="nav-button" onclick="location.href='ManipulacaoBancoDados/me315.html'">R</button>
-<button id="nav3" class="nav-button">Python</button>
+  <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">暗</button>
+  <button id="homeIcon" class="theme-toggle" style="right: calc(100px + 1vw + 20px);" onclick="location.href='index.html'">&#x2302;</button>
 
-<button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">暗</button>
-<button id="homeIcon" class="theme-toggle" style="right: calc(100px + 1vw + 20px);" onclick="location.href='index.html'">&#x2302;</button>
-<script>
-function toggleTheme() {
-  const body = document.body;
-  const isDark = body.classList.contains('dark');
-  body.classList.toggle('dark');
-  body.classList.toggle('light');
-  const newTheme = isDark ? 'light' : 'dark';
-  localStorage.setItem('theme', newTheme);
-  document.getElementById('themeToggle').textContent =
-    newTheme === 'dark' ? '暗' : '明';
-}
-</script>
+  <script>
+    // Toggle theme dynamically
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      const isDark = htmlEl.classList.contains('dark');
+      htmlEl.classList.toggle('dark');
+      htmlEl.classList.toggle('light');
+      const newTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', newTheme);
+      document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '暗' : '明';
+    }
 
+    // Initialize button text after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.getElementById('themeToggle').textContent = savedTheme === 'dark' ? '暗' : '明';
+    });
+  </script>
 </body>
 </html>
