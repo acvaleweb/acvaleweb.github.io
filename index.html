@@ -41,8 +41,8 @@ body.dark  { background-color: var(--base03); color: var(--base2); }
 /* All fixed elements */
 #title {
   position: fixed;
-  top: 5vh;
-  left: 5vh;
+  top: 1vw;
+  left: 1vw;
   font-size: 3rem;
 }
 
@@ -73,8 +73,8 @@ body.dark  .nav-button { background-color: var(--base01); color: var(--base2); }
 /* Toggle button top-right */
 .theme-toggle {
   position: fixed;
-  top: 5vh;
-  right: 5vh;
+  top: 1vw;
+  right: 1vw;
   width: 100px;
   height: 100px;
   border: none;
@@ -99,7 +99,7 @@ body.dark  .theme-toggle { background-color: var(--base01); color: var(--base2);
 <button id="nav3" class="nav-button">Python</button>
 
 <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">暗</button>
-<button id="homeIcon" class="theme-toggle" style="right: calc(100px + 5vh + 20px);" onclick="location.href='index.html'">&#x2302;</button>
+<button id="homeIcon" class="theme-toggle" style="right: calc(100px + 1vw + 20px);" onclick="location.href='index.html'">&#x2302;</button>
 <script>
 (function() {
   const savedTheme = localStorage.getItem('theme');
